@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rayan Alanazi — Portfolio</title>
+<meta name="description" content="Portfolio of Rayan Alanazi — Computer Science graduate exploring projects, learning, and development." />
+
+<style>
+  /* ===== ROOT COLORS ===== */
+  :root {
+    --bg: #0f1724;
+    --card: rgba(255,255,255,0.04);
+    --glass: rgba(255,255,255,0.03);
+    --accent: #3b82f6;
+    --accent2: #06b6d4;
+    --text: #e0e0e0;
+    --muted: rgba(255,255,255,0.75);
+    --radius: 14px;
+    --mono: "Fira Mono", monospace;
+  }
+
+  @media (prefers-color-scheme: light){
+    :root{
+      --bg:#f6f9fc;
+      --card:#ffffff;
+      --glass: rgba(0,0,0,0.03);
+      --accent:#007acc;
+      --accent2:#0ea5a4;
+      --text:#1f2937;
+      --muted: rgba(31,41,55,0.8);
+    }
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family: Inter, sans-serif; background: var(--bg); color: var(--text); line-height:1.5;}
+  a{color: var(--accent); text-decoration: none;}
+  a:hover{text-decoration: underline;}
+  .container{max-width: 1100px; margin: 20px auto; padding: 20px;}
+
+  /* NAV */
+  .nav{display:flex; justify-content: space-between; align-items:center; margin-bottom: 20px;}
+  .brand h1{font-size:1.2rem; letter-spacing:0.5px; color: var(--text);}
+  .nav-links a{margin-left: 15px; font-weight:500; padding:6px 12px; border-radius:10px; transition:0.2s;}
+  .nav-links a:hover{background:var(--accent2); color:white;}
+
+  /* HERO */
+  .hero{display:grid; grid-template-columns: 1fr 380px; gap:20px; align-items:center; margin-bottom:30px;}
+  @media (max-width: 920px){ .hero{grid-template-columns:1fr;} }
+  .hero-left{background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent); padding:30px; border-radius:var(--radius); backdrop-filter: blur(8px); border:1px solid rgba(255,255,255,0.06);}
+  .headline{font-size: clamp(1.6rem,3vw,2.4rem); font-weight:700; margin-bottom:8px; color:white;}
+  .sub{color:var(--muted); margin-bottom:15px;}
+  .cta{display:flex; gap:12px; flex-wrap:wrap;}
+  .btn{background:linear-gradient(90deg,var(--accent),var(--accent2)); color:white; padding:10px 14px; border-radius:10px; border:none; font-weight:600; cursor:pointer; transition:0.2s;}
+  .btn:hover{transform:translateY(-2px); box-shadow:0 6px 12px rgba(0,0,0,0.3);}
+  .btn.ghost{background:transparent; border:1px solid rgba(255,255,255,0.06); color: var(--text);}
+
+  .hero-right{padding:20px; border-radius: var(--radius); border:1px solid rgba(255,255,255,0.06); background:linear-gradient(180deg,var(--card),transparent); box-shadow:0 8px 30px rgba(0,0,0,0.12);}
+  .avatar{width:84px;height:84px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:28px;margin-bottom:12px;}
+  .stat{padding:10px;border-radius:10px;background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent); text-align:center; flex:1; margin:4px;}
+  .stat b{display:block; color: var(--accent); font-size:1.05rem;}
+
+  /* SECTIONS */
+  section.card{margin-top:20px; padding:22px; border-radius: var(--radius); border:1px solid rgba(255,255,255,0.06); background:linear-gradient(180deg,var(--card),transparent);}
+  h2.section-title{color:var(--accent); border-bottom:2px solid var(--accent); padding-bottom:6px; display:inline-block; margin-bottom:12px;}
+
+  /* PROJECTS GRID */
+  .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px;}
+  .project{border-radius:12px; padding:14px; background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent); border:1px solid rgba(255,255,255,0.06); transition: transform 0.18s ease, box-shadow 0.18s ease;}
+  .project:hover{transform:translateY(-6px); box-shadow:0 14px 30px rgba(2,6,23,0.25);}
+  .project h3{color:var(--accent); margin-bottom:6px;}
+  .project .proj-desc{font-size:0.92rem; color: var(--muted); margin-bottom:8px;}
+  .badges{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:8px;}
+  .badge{font-size:0.78rem; padding:6px 8px; border-radius:8px; background: rgba(0,0,0,0.06); border:1px solid rgba(255,255,255,0.06);}
+
+  /* SKILLS GRID */
+  .skills-list{display:flex; flex-wrap:wrap; gap:10px;}
+  .skill-pill{padding:8px 10px;border-radius:8px;background:linear-gradient(90deg, rgba(255,255,255,0.02), transparent);border:1px solid rgba(255,255,255,0.06); font-weight:600;}
+
+  footer{margin-top:30px; padding:18px; border-radius:12px;text-align:center;color:var(--muted);}
+</style>
+</head>
+
+<body>
+<div class="container">
+  <!-- NAV -->
+  <div class="nav">
+    <div class="brand">
+      <h1>Rayan Alanazi</h1>
+    </div>
+    <div class="nav-links">
+      <a href="#contact">Contact</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-left">
+      <div class="headline">Exploring all sides of technology</div>
+      <div class="sub">Fresh Computer Science graduate passionate about learning and building practical projects across web, data, and software development.</div>
+      <div class="cta">
+        <button class="btn" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">See Projects</button>
+        <a class="btn ghost" href="mailto:RayanAlanazi.CS@gmail.com">Email Me</a>
+        <a class="btn ghost" href="https://linkedin.com/in/rayan-alanazi-cs" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="avatar">RA</div>
+      <div style="margin-bottom:8px"><b>Rayan Ali Mohammed Alenazi</b></div>
+      <div class="muted">Computer Science Graduate</div>
+      <div style="display:flex; margin-top:12px; gap:8px;">
+        <div class="stat"><b>5</b>Projects</div>
+        <div class="stat"><b>Learning</b>Next.js • ML • Data Viz</div>
+        <div class="stat"><b>Co-op</b>Web Dev Intern</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="card" id="about">
+    <h2 class="section-title">About Me</h2>
+    <p>Hi, I’m Rayan. I build small projects to learn big ideas. My goal is to explore multiple sides of technology—web, data, and software—while growing as a developer. This portfolio highlights my personal and learning projects, including my graduation project on Flood Prediction using machine learning.</p>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="card" id="projects">
+    <h2 class="section-title">Projects</h2>
+    <div class="grid">
+      <div class="project">
+        <h3>TaskFlow — To-Do Web App</h3>
+        <div class="proj-desc">A simple task manager with persistent storage using LocalStorage. Helps practice basic web functionality and user interaction.</div>
+        <div class="badges"><div class="badge">HTML</div><div class="badge">CSS</div><div class="badge">JS</div></div>
+      </div>
+      <div class="project">
+        <h3>Study Organizer</h3>
+        <div class="proj-desc">A personal web prototype for organizing topics, tasks, and notes. Designed as a practical learning project to explore layout, forms, and basic logic.</div>
+        <div class="badges"><div class="badge">HTML</div><div class="badge">CSS</div><div class="badge">JS</div></div>
+      </div>
+      <div class="project">
+        <h3>Algorithm Explorer</h3>
+        <div class="proj-desc">Interactive page demonstrating sorting algorithms and step-by-step visualization. Builds understanding of fundamental algorithms and JS manipulation.</div>
+        <div class="badges"><div class="badge">HTML</div><div class="badge">JS</div></div>
+      </div>
+      <div class="project">
+        <h3>Flood Prediction (Graduation Project)</h3>
+        <div class="proj-desc">Built a predictive model using Python and scikit-learn to forecast flood risk from historical weather and river data. Explored data cleaning, feature engineering, and model evaluation.</div>
+        <div class="badges"><div class="badge">Python</div><div class="badge">ML</div><div class="badge">Pandas</div><div class="badge">scikit-learn</div></div>
+      </div>
+      <div class="project">
+        <h3>Portfolio (this site)</h3>
+        <div class="proj-desc">Responsive single-page portfolio built with HTML/CSS/JS to showcase projects, skills, and learning journey.</div>
+        <div class="badges"><div class="badge">HTML</div><div class="badge">CSS</div><div class="badge">JS</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="card" id="education">
+    <h2 class="section-title">Education</h2>
+    <div>
+      <h3>Imam Mohammad ibn Saud University</h3>
+      <div class="muted">Bachelor in Computer Science — Very Good (2019–2024)</div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="card" id="experience">
+    <h2 class="section-title">Experience</h2>
+    <div>
+      <h3>Web Development Intern — Shgardi Gate for Information Technology</h3>
+      <div class="muted">Jan 2024 — May 2024 (Co-op)</div>
+      <ul style="margin-left:18px; color: var(--muted)">
+        <li>Maintained website components, assisted with testing and deployments.</li>
+        <li>Worked with Firebase for structured data and basic admin tasks.</li>
+        <li>Documented team progress and supported reporting activities.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="card" id="skills">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-list">
+      <div class="skill-pill">Python</div>
+      <div class="skill-pill">JavaScript</div>
+      <div class="skill-pill">HTML & CSS</div>
+      <div class="skill-pill">Firebase</div>
+      <div class="skill-pill">SQL (basic)</div>
+      <div class="skill-pill">Git/GitHub</div>
+      <div class="skill-pill">Linux (basic)</div>
+      <div class="skill-pill">Problem Solving</div>
+      <div class="skill-pill">Machine Learning</div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="card" id="contact">
+    <h2 class="section-title">Contact</h2>
+    <p>If you want to discuss a role, collaborate, or just say hi — email or connect with me on LinkedIn.</p>
+    <p><strong>Email:</strong> <a href="mailto:RayanAlanazi.CS@gmail.com">RayanAlanazi.CS@gmail.com</a></p>
+    <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/rayan-alanazi-cs" target="_blank">linkedin.com/in/rayan-alanazi-cs</a></p>
+  </section>
+
+  <footer>© 2025 Rayan Alanazi — Learning, exploring, building.</footer>
+</div>
+</body>
+</html>
